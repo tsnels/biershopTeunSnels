@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="nl" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments::head(title = ${brouwer} ? ${brouwer.naam} :
+'Brouwer niet gevonden')"></head>
+
+<body>
+
+<nav th:replace="fragments::menu"></nav>
+
+<div th:if="not${brouwer}">Brouwer niet gevonden:
+    <th:block th:text="*{id}"></th:block>
+</div>
+
+<th:block th:if="${brouwer}" th:object="${brouwer}">
+    <h1 th:text="|*{naam} (*{gemeente})|"></h1>
+    <th:block th:if="${bieren}" th:object="${bieren}">
+        <table>
+            <tbody>
+            <tr th:each="bier:${bieren}" th:object="${bier}">
+                <td><a th:text="*{naam}" th:href="@{/bier/{id}(id = *{id})}"></a></td>
+            </tr>
+            </tbody>
+        </table>
+    </th:block>
+
+</th:block>
+
+
+
+
+</body>
+</html>

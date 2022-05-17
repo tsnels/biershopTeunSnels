@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="nl" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments::head(title='De biershop')"></head>
+
+<body>
+
+<nav th:replace="fragments::menu"></nav>
+
+<h1>Brouwers</h1>
+
+<table>
+    <tbody>
+        <tr th:each="brouwer:${alleBrouwers}" th:object="${brouwer}">
+        <td><a th:text="|*{naam} (*{gemeente})|" th:href="@{/brouwers/{id}(id=*{id})}"></a></td>
+        </tr>
+    </tbody>
+
+</table>
+
+</body>
+</html>

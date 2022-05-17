@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="nl" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments::head(title = ${bierDetails} ? ${bierDetails.naam} :
+'Bier niet gevonden')"></head>
+
+<body>
+
+<nav th:replace="fragments::menu"></nav>
+
+<div th:if="not${bierDetails}">Bier niet gevonden:
+    <th:block th:text="*{id}"></th:block>
+</div>
+
+<th:block th:if="${bierDetails}" th:object="${bierDetails}">
+    <h1 th:text="*{naam}"></h1>
+
+
+    <ul th:each="bier:${bierDetails}" th:object="${bier}" class="details">
+        <li th:text="Alcohol" class="bold"></li>
+        <li th:text="|*{alcohol} %|"></li>
+        <li th:text="Prijs" class="bold"></li>
+        <li th:text="|*{prijs} €|"></li>
+    </ul>
+
+    <form th:object="${aantalForm}"
+          method="post" th:action="@{/mandje}">
+        <label>Aantal: <input
+                autofocus type="number" required min="1"></label>
+<!--        <label>Tot:<span th:errors="*{tot}"></span><input-->
+<!--                th:field="*{tot}" type="number" required min="0"></label>-->
+        <button>Toevoegen</button>
+    </form>
+
+
+</th:block>
+
+
+</body>
+</html>
