@@ -2,20 +2,17 @@ package be.vdab.biershopteunsnels.repositories;
 
 
 import be.vdab.biershopteunsnels.domain.Bier;
-import be.vdab.biershopteunsnels.domain.Brouwer;
 import org.springframework.stereotype.Repository;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.dao.IncorrectResultSizeDataAccessException;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.core.simple.SimpleJdbcCall;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 
 @Repository
 public class BierRepository {
@@ -63,6 +60,29 @@ public class BierRepository {
             return Optional.empty();
         }
     }
+
+    public List<Bier> findByIds(Set<Long> ids) {
+        if (ids.isEmpty()) {
+            return List.of();
+        }
+        var sql = """
+                select id, naam, brouwerId, alcohol, prijs, besteld
+                from bieren
+                where id in (
+                """
+                + "?,".repeat(ids.size() -1 )
+                + "?) order by id";
+        return template.query(sql, bierMapper, ids.toArray());
+    }
+
+//    public void create() {
+//    var sql = """
+//                insert into bestelbonnen(naam, straat, huisNr, postcode, gemeente)
+//                values(?, ?, ?, ?, ?)
+//            """;
+//    template.update(sql, "wed", "wede","jhgbsdahj", "jhgwed", "kjh");
+//
+//    }
 
 
 }

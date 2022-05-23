@@ -16,22 +16,32 @@
     <h1 th:text="*{naam}"></h1>
 
 
-    <ul th:each="bier:${bierDetails}" th:object="${bier}" class="details">
-        <li th:text="Alcohol" class="bold"></li>
-        <li th:text="|*{alcohol} %|"></li>
-        <li th:text="Prijs" class="bold"></li>
-        <li th:text="|*{prijs} €|"></li>
-    </ul>
+    <dl th:each="bier:${bierDetails}" th:object="${bier}" class="details">
+        <dt th:text="Alcohol" class="bold"></dt>
+        <dd th:text="|*{alcohol} %|"></dd>
+        <dt th:text="Prijs" class="bold"></dt>
+        <dd th:text="|*{prijs} €|"></dd>
+    </dl>
 
-    <form th:object="${aantalForm}"
-          method="post" th:action="@{/mandje}">
-        <label>Aantal: <input
-                autofocus type="number" required min="1"></label>
-<!--        <label>Tot:<span th:errors="*{tot}"></span><input-->
-<!--                th:field="*{tot}" type="number" required min="0"></label>-->
+    <form th:object="${aantal}" method="post" th:action="@{/mandje/{id}(id = ${bierDetails.id})}" >
+        <Label>Aantal<input th:field="*{aantal}" autofocus></Label>
         <button>Toevoegen</button>
     </form>
 
+<!--    <form method="post" th:action="@{/mandje}" th:object="${bestelling}">-->
+<!--        <label>Aantal: <input-->
+<!--                autofocus type="number" required min="1"></label>-->
+<!--&lt;!&ndash;        <label>Tot:<span th:errors="*{tot}"></span><input&ndash;&gt;-->
+<!--&lt;!&ndash;                th:field="*{tot}" type="number" required min="0"></label>&ndash;&gt;-->
+<!--        <button>Toevoegen</button>-->
+<!--    </form>-->
+
+<!--    <form th:object="${naarWinkelWagen}" method="post" th:action="@{/mandje}">-->
+<!--        <label>Aantal: <span th:errors="*{naam}"></span>-->
+<!--            <input th:field="*{naam}" autofocus required></label>-->
+<!--&lt;!&ndash;        <input type="hidden" name="id" value="0">&ndash;&gt;-->
+<!--        <button>Toevoegen</button>-->
+<!--    </form>-->
 
 </th:block>
 

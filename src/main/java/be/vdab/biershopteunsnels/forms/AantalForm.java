@@ -1,4 +1,6 @@
 package be.vdab.biershopteunsnels.forms;
 
-public record AantalForm(int aantal) {
+import javax.validation.constraints.NotNull;
+
+public record AantalForm(@NotNull int aantal) {
 }
