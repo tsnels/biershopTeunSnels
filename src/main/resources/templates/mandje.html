@@ -33,20 +33,27 @@
         </tbody>
     </table>
 </th:block>
+
 <th:block th:if="not ${mandje.isEmpty()}">
-    <h1 th:text="${totalePrijs}"></h1>
+    <h1 th:text="|Totale prijs: €${totalePrijs}|"></h1>
 </th:block>
 
 <div th:if="${mandje.isEmpty()}">Je mandje is leeg.</div>
 
-<form th:object="${persoonsGegevens}" method="post" th:action="@{/mandje}" >
-    <Label>Naam<input th:field="*{naam}" autofocus></Label>
-    <button>Toevoegen</button>
+<th:block th:if="not ${mandje.isEmpty()}">
+<form class="formulier" th:object="${persoonsGegevens}" method="post" th:action="@{/bestelBevestiging}" >
+    <div><label>Naam</label><input th:field="*{naam}" autofocus/></div>
+    <div><label>Straat</label><input th:field="*{straat}" autofocus/></div>
+    <div><label>Huisnummer</label><input th:field="*{huisNr}" autofocus/></div>
+    <div><label>Postcode</label><input th:field="*{postcode}" autofocus/></div>
+    <div><label>Gemeente</label><input th:field="*{gemeente}" autofocus/></div>
+    <button>Als bestelbon bevestigen</button>
 </form>
-
-<th:block th:if="${bevestiging}">
-    <h2 th:text="${bevestiging}"></h2>
 </th:block>
+
+<!--<th:block th:if="${bevestiging}">-->
+<!--    <h2 th:text="${bevestiging}"></h2>-->
+<!--</th:block>-->
 
 </body>
 </html>

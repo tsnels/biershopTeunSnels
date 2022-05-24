@@ -74,3 +74,14 @@ tr:hover {
     list-style: none;
     font-size: larger;
 }
+
+.formulier div {
+    display: block;
+    padding-bottom: 15px;
+}
+
+.formulier label {
+    display: inline-block;
+    width: 150px;
+}
+

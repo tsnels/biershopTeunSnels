@@ -75,14 +75,7 @@ public class BierRepository {
         return template.query(sql, bierMapper, ids.toArray());
     }
 
-//    public void create() {
-//    var sql = """
-//                insert into bestelbonnen(naam, straat, huisNr, postcode, gemeente)
-//                values(?, ?, ?, ?, ?)
-//            """;
-//    template.update(sql, "wed", "wede","jhgbsdahj", "jhgwed", "kjh");
-//
-//    }
+
 
 
 }

@@ -1,20 +1,14 @@
 package be.vdab.biershopteunsnels.controllers;
 
-import be.vdab.biershopteunsnels.domain.NaarWinkelwagen;
 import be.vdab.biershopteunsnels.forms.AantalForm;
 import be.vdab.biershopteunsnels.services.BierService;
 import be.vdab.biershopteunsnels.services.BrouwerService;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.validation.Valid;
-import java.math.BigDecimal;
 
 @Controller
 @RequestMapping("bier")

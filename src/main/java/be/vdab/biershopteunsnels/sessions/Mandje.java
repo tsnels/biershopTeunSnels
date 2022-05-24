@@ -16,10 +16,11 @@ import java.util.Set;
 public class Mandje implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
     private List<MandjeItems> items = new ArrayList<>();
 
-    public void voegToe(String naam, BigDecimal prijs, int aantal) {
-        items.add(new MandjeItems(naam, prijs, aantal));
+    public void voegToe(String naam, BigDecimal prijs, int aantal, long bierId) {
+        items.add(new MandjeItems(naam, prijs, aantal, bierId));
     }
 
     public List<MandjeItems> getItems() {
@@ -32,5 +33,7 @@ public class Mandje implements Serializable {
         return items.stream().map(item -> item.getTotaal()).reduce(BigDecimal.ZERO, (totaal, prijs) -> totaal.add(prijs));
     }
 
-
+    public void emptyList() {
+        items.clear();
+    }
 }

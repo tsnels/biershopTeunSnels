@@ -1,8 +1,6 @@
 package be.vdab.biershopteunsnels.services;
 
 import be.vdab.biershopteunsnels.domain.Bier;
-import be.vdab.biershopteunsnels.domain.Brouwer;
-import be.vdab.biershopteunsnels.domain.NaarWinkelwagen;
 import be.vdab.biershopteunsnels.repositories.BierRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
