@@ -7,12 +7,14 @@ import be.vdab.biershopteunsnels.services.BestelService;
 import be.vdab.biershopteunsnels.services.BierService;
 import be.vdab.biershopteunsnels.sessions.Mandje;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
 import java.math.BigDecimal;
 
 @Controller
@@ -37,8 +39,11 @@ public class MandjeController {
 //    }
 
     @PostMapping("/mandje/{id}")
-    public String voegToe(@PathVariable long id, AantalForm aantal) {
+    public String voegToe(@PathVariable long id, @Valid AantalForm aantal, Errors errors) {
         var bier = bierService.findByBierId(id).get();
+        if (errors.hasErrors()) {
+            return "redirect:/bier/{id}";
+        }
         mandje.voegToe(bier.getNaam(),bier.getPrijs(), aantal.aantal(), bier.getId());
         return "redirect:/mandje";
     }

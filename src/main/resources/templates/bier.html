@@ -24,7 +24,8 @@
     </dl>
 
     <form th:object="${aantal}" method="post" th:action="@{/mandje/{id}(id = ${bierDetails.id})}" >
-        <Label>Aantal<input th:field="*{aantal}" autofocus></Label>
+        <Label>Aantal<span th:errors="*{aantal}"></span>
+            <input th:field="*{aantal}" autofocus ></Label>
         <button>Toevoegen</button>
     </form>
 
