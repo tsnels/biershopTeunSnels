@@ -1,7 +1,6 @@
 package be.vdab.biershopteunsnels.repositories;
 
 
-import be.vdab.biershopteunsnels.domain.Bier;
 import be.vdab.biershopteunsnels.domain.Brouwer;
 import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;

@@ -42,7 +42,6 @@ public class BestelRepository {
                             "bierId", item.getBierId(),
                             "aantal", item.getAantal(),
                             "prijs", item.getPrijs()
-                            )
-            );
+                            ));
     }
 }

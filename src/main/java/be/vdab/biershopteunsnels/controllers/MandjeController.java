@@ -20,8 +20,6 @@ import java.math.BigDecimal;
 @Controller
 public class MandjeController {
 
-//    private PersoonsGegevens persoonsGegevens = new PersoonsGegevens(null, null, null, 0, null);
-
     private long bestelId;
     private final BestelService bestelService;
 
@@ -34,9 +32,6 @@ public class MandjeController {
         this.bierService = bierService;
     }
 
-//    public PersoonsGegevens getPersoonsGegevens() {
-//        return persoonsGegevens;
-//    }
 
     @PostMapping("/mandje/{id}")
     public String voegToe(@PathVariable long id, @Valid AantalForm aantal, Errors errors) {
@@ -56,8 +51,6 @@ public class MandjeController {
         modelAndView.addObject("totalePrijs", totalePrijs);
         modelAndView.addObject("persoonsGegevens",new PersoonsGegevens(null, null, null,
                 null, null));
-//               bierService.findByIds(mandje.getItems().stream().map(MandjeItems::getBierId).collect(Collectors.toSet())));
-//        modelAndView.addObject("mandje", mandje);
         return modelAndView;
     }
 
@@ -67,8 +60,10 @@ public class MandjeController {
     }
 
     @PostMapping("/bestelBevestiging")
-    public String BestelBonMaken(PersoonsGegevens persoonsGegevens) {
-        System.err.println("works");
+    public String BestelBonMaken(@Valid PersoonsGegevens persoonsGegevens, Errors errors) {
+        if (errors.hasErrors()){
+            return "redirect:/mandje";
+        }
         bestelId = bestelService.createBestelling(persoonsGegevens, mandje);
         return "redirect:/bestelBevestiging";
     }

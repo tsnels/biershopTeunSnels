@@ -26,10 +26,6 @@
             <td th:text="*{aantal}"></td>
             <td th:text="*{totaal}"></td>
         </tr>
-<!--        <tr th:object="${mandje}">-->
-<!--            <td th:text="*{aantal.stream().findFirst()}"></td>-->
-<!--        </tr>-->
-
         </tbody>
     </table>
 </th:block>
@@ -42,18 +38,14 @@
 
 <th:block th:if="not ${mandje.isEmpty()}">
 <form class="formulier" th:object="${persoonsGegevens}" method="post" th:action="@{/bestelBevestiging}" >
-    <div><label>Naam</label><input th:field="*{naam}" autofocus/></div>
-    <div><label>Straat</label><input th:field="*{straat}" autofocus/></div>
-    <div><label>Huisnummer</label><input th:field="*{huisNr}" autofocus/></div>
-    <div><label>Postcode</label><input th:field="*{postcode}" autofocus/></div>
-    <div><label>Gemeente</label><input th:field="*{gemeente}" autofocus/></div>
+    <div><label>Naam</label><input type="text" pattern="[a-zA-Z]*"  th:field="*{naam}"/></div>
+    <div><label>Straat</label><input type="text" pattern="[a-zA-Z]*" th:field="*{straat}"/></div>
+    <div><label>Huisnummer</label><input type="text" th:field="*{huisNr}"/></div>
+    <div><label>Postcode</label><input type="number" min="1000" max="9999" step="1" th:field="*{postcode}"/></div>
+    <div><label>Gemeente</label><input type="text" pattern="[a-zA-Z]*" th:field="*{gemeente}"/></div>
     <button>Als bestelbon bevestigen</button>
 </form>
 </th:block>
-
-<!--<th:block th:if="${bevestiging}">-->
-<!--    <h2 th:text="${bevestiging}"></h2>-->
-<!--</th:block>-->
 
 </body>
 </html>

@@ -25,24 +25,9 @@
 
     <form th:object="${aantal}" method="post" th:action="@{/mandje/{id}(id = ${bierDetails.id})}" >
         <Label>Aantal<span th:errors="*{aantal}"></span>
-            <input th:field="*{aantal}" autofocus ></Label>
+            <input type="number" min="1" step="1" th:field="*{aantal}" autofocus ></Label>
         <button>Toevoegen</button>
     </form>
-
-<!--    <form method="post" th:action="@{/mandje}" th:object="${bestelling}">-->
-<!--        <label>Aantal: <input-->
-<!--                autofocus type="number" required min="1"></label>-->
-<!--&lt;!&ndash;        <label>Tot:<span th:errors="*{tot}"></span><input&ndash;&gt;-->
-<!--&lt;!&ndash;                th:field="*{tot}" type="number" required min="0"></label>&ndash;&gt;-->
-<!--        <button>Toevoegen</button>-->
-<!--    </form>-->
-
-<!--    <form th:object="${naarWinkelWagen}" method="post" th:action="@{/mandje}">-->
-<!--        <label>Aantal: <span th:errors="*{naam}"></span>-->
-<!--            <input th:field="*{naam}" autofocus required></label>-->
-<!--&lt;!&ndash;        <input type="hidden" name="id" value="0">&ndash;&gt;-->
-<!--        <button>Toevoegen</button>-->
-<!--    </form>-->
 
 </th:block>
 

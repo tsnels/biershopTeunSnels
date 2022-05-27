@@ -1,4 +1,9 @@
 package be.vdab.biershopteunsnels.forms;
 
-public record PersoonsGegevens(String naam, String straat, String huisNr, Integer postcode, String gemeente) {
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Positive;
+
+public record PersoonsGegevens(@NotBlank String naam,@NotBlank String straat,@NotBlank String huisNr, @Min(1000) @Max(9999) Integer postcode,@NotBlank String gemeente) {
 }

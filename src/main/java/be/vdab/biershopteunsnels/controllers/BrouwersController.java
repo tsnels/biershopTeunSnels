@@ -3,7 +3,6 @@ package be.vdab.biershopteunsnels.controllers;
 import be.vdab.biershopteunsnels.services.BierService;
 import be.vdab.biershopteunsnels.services.BrouwerService;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

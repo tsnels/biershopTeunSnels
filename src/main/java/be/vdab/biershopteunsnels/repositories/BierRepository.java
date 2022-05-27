@@ -8,9 +8,7 @@ import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 
-import java.math.BigDecimal;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 
@@ -23,8 +21,6 @@ public class BierRepository {
             new Bier(result.getLong("id"), result.getString("naam"),
                     result.getLong("brouwerId"), result.getBigDecimal("alcohol"),
                     result.getBigDecimal("prijs"), result.getLong("besteld"));
-//    private final RowMapper<BigDecimal> prijsMapper =
-//            (result, rowNum) -> result.getBigDecimal("prijs");
 
     public BierRepository(JdbcTemplate template) {
         this.template = template;
@@ -74,8 +70,4 @@ public class BierRepository {
                 + "?) order by id";
         return template.query(sql, bierMapper, ids.toArray());
     }
-
-
-
-
 }

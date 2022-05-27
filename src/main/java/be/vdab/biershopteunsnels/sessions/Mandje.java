@@ -7,9 +7,7 @@ import org.springframework.web.context.annotation.SessionScope;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 
 @Component
 @SessionScope
@@ -28,6 +26,7 @@ public class Mandje implements Serializable {
     }
 
     public BigDecimal getTotaal() {
+        // Alternative manier
 //        BigDecimal totaal = BigDecimal.ZERO;
 //        items.stream().forEach(item -> totaal.add(item.getTotaal()));
         return items.stream().map(item -> item.getTotaal()).reduce(BigDecimal.ZERO, (totaal, prijs) -> totaal.add(prijs));

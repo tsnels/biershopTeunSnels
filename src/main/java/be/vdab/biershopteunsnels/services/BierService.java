@@ -33,7 +33,4 @@ public class BierService {
         return bierRepository.findByIds(ids);
     }
 
-//    public void create(){
-//        bierRepository.create();
-//    }
 }

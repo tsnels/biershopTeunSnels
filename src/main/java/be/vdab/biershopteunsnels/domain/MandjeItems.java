@@ -1,9 +1,7 @@
 package be.vdab.biershopteunsnels.domain;
 
-import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
-import java.math.BigInteger;
 
 
 public class MandjeItems {
