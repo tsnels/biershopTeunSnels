@@ -20,6 +20,15 @@ public class Bier {
         this.besteld = besteld;
     }
 
+    public Bier(String naam, long brouwerId, BigDecimal alcohol, BigDecimal prijs, long besteld) {
+        this.id = 0;
+        this.naam = naam;
+        this.brouwerId = brouwerId;
+        this.alcohol = alcohol;
+        this.prijs = prijs;
+        this.besteld = besteld;
+    }
+
     public long getId() {
         return id;
     }

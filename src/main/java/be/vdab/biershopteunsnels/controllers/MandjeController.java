@@ -54,7 +54,7 @@ public class MandjeController {
         return modelAndView;
     }
 
-    @RequestMapping("/bestelBevestiging")
+    @GetMapping("/bestelBevestiging")
     public ModelAndView id () {
         return new ModelAndView("bestelBevestiging", "id", bestelId);
     }

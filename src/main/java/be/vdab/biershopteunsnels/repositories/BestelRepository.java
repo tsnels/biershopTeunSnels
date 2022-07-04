@@ -33,10 +33,6 @@ public class BestelRepository {
     }
 
     public void createBestelbonlijnen (MandjeItems item, long bestelbonId) {
-        System.out.println(bestelbonId);
-        System.out.println(item.getBierId());
-        System.out.println(item.getAantal());
-        System.out.println(item.getPrijs());
             insert2.execute(
                     Map.of("bestelbonId", bestelbonId,
                             "bierId", item.getBierId(),
